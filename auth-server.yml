@@ -17,13 +17,13 @@ security:
 # and token store
 spring:
   datasource:
-    url: jdbc:derby:auth2;create=true
-    username: 
-    password: 
-    driver-class: org.apache.derby.jdbc.EmbeddedDriver
+    url: jdbc:mysql://localhost:3306/auth
+    username: root
+    password: root@123
+    driver-class: com.mysql.jdbc.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.DerbyDialect
+    database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
       ddl-auto: create
