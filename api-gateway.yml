@@ -61,16 +61,16 @@ spring:
 # Datasource and JPA configuration to be used for using the same tokenstore as the authorization server for
 # the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
   datasource:
-    url: jdbc:derby:auth2;create=true
-    username: 
-    password: 
-    driver-class: org.apache.derby.jdbc.EmbeddedDriver
+    url: jdbc:mysql://localhost:3306/auth
+    username: root
+    password: root@123
+    driver-class: com.mysql.jdbc.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.DerbyDialect
+    database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
 
 ---
 # Auth-server instance when used on Docker
