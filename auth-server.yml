@@ -28,13 +28,13 @@ spring:
     hibernate:
       ddl-auto: create
 
-    mail:
-     host: smtp.gmail.com
-     port: 587
-     username: ecmventus@gmail.com
-     password: admin@12345
-     properties.mail.smtp.auth: true
-     properties.mail.smtp.starttls.enable: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ecmventus@gmail.com
+    password: admin@12345
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
 
 ---
 
