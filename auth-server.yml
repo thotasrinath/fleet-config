@@ -17,9 +17,9 @@ security:
 # and token store
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/auth
+    url: jdbc:mysql://localhost:3306/test
     username: root
-    password: omsairam
+    password: root
     driver-class: com.mysql.jdbc.Driver
 
   jpa:

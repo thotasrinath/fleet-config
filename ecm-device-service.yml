@@ -14,9 +14,9 @@ spring:
     sampler:
       percentage: 1.0
   datasource:
-    url: jdbc:mysql://localhost:3306/auth
+    url: jdbc:mysql://localhost:3306/test
     username: root
-    password: omsairam
+    password: root
     driver-class: com.mysql.jdbc.Driver
 
   jpa:
