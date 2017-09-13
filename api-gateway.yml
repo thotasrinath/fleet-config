@@ -1,8 +1,6 @@
 spring:
   aop:
     proxy-target-class: true
-  zipkin:
-    baseUrl: http://localhost:9411/
   sleuth:
     sampler:
 # Generally the tracing data volume can be quite high; so we can tell Spring sleuth to
@@ -15,7 +13,7 @@ spring:
 # When enabled=false, traces log to the console. Comment to send to zipkin
 sample:
   zipkin:
-    enabled: true
+    enabled: false
 
 # The OAuth2 server definition that would be used to send the authorization requests to
 authserver:
@@ -67,16 +65,6 @@ zuul:
       path: /user-service/**
       stripPrefix: false
       serviceId: user-webservice
-      sensitiveHeaders:
-    ecm-device:
-      path: /ecm-device/**
-      stripPrefix: false
-      serviceId: ecm-device-service
-      sensitiveHeaders:
-    task-service:
-      path: /task-service/**
-      stripPrefix: false
-      serviceId: task-webservice
       sensitiveHeaders:
     user:
       path: /api/loggedinuser/**
