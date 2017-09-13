@@ -1,28 +1,33 @@
 server:
   port: 8081
+  contextPath: /user-service
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-# The OAuth2 server definition that would be used to send the authorization requests to
-authserver:
-    hostname: localhost
-    port: 8899
-    contextPath: userauth
-
-# Note that the "/user" endpoint needs to provide the principle of the logged in user (/me endpoint)
-#spring:
-#  oauth2:
-#    resource: 
-#      userInfoUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/me
-#      preferTokenInfo: false 
 spring:
+  zipkin:
+    baseUrl: http://localhost:9411/
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+# When enabled=false, traces log to the console. Comment to send to zipkin
+sample:
+  zipkin:
+    enabled: true
+
+# Note that we will use the JWT token to get user data
+security:
   oauth2:
     resource:
-      userInfoUri: http://localhost:8765/api/loggedinuser/me
-      preferTokenInfo: false
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhVny3DfQqdvQaPj6SJiiFfPRGH/5k3OiAXTCsmpKnL/GVKZpfFjT3LhN7xoj0DzJLTCOE94eOjIHipFzxrL00kBCZJ3HOornKDpTh17yPuqJI6DNmvJaRBbc3SVQsO0vndnDAeOBiv4euGHH97sPZYFqhmwM35PboqxeWaHrfgWcA5F8VFTp+HDPr26G4sv/UqkR1LsfRoD4gzNJswi00eWcNjeoEzy71023VECQYDytUg/wVqWOJnShWOJnCBnuzmjrtOCg6O6ecdHhVaiRI0//ZR71x2oDW5pe+kgVhhM29TH8SVRjbAFh35obN6ppcF3A7PFLf+euZTsmXMaahQIDAQAB
+ -----END PUBLIC KEY-----
 
 ---
 # user-webservice instance when used on Docker
