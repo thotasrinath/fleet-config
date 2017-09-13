@@ -1,6 +1,8 @@
 spring:
   aop:
     proxy-target-class: true
+  zipkin:
+    baseUrl: http://localhost:9411/
   sleuth:
     sampler:
 # Generally the tracing data volume can be quite high; so we can tell Spring sleuth to
@@ -13,7 +15,7 @@ spring:
 # When enabled=false, traces log to the console. Comment to send to zipkin
 sample:
   zipkin:
-    enabled: false
+    enabled: true
 
 # The OAuth2 server definition that would be used to send the authorization requests to
 authserver:

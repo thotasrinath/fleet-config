@@ -13,11 +13,16 @@ authserver:
     contextPath: userauth
 
 # Note that the "/user" endpoint needs to provide the principle of the logged in user (/me endpoint)
+#spring:
+#  oauth2:
+#    resource: 
+#      userInfoUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/me
+#      preferTokenInfo: false 
 spring:
   oauth2:
-    resource: 
-      userInfoUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/me
-      preferTokenInfo: false 
+    resource:
+      userInfoUri: http://localhost:8765/api/loggedinuser/me
+      preferTokenInfo: false
 
 ---
 # user-webservice instance when used on Docker
